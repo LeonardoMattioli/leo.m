@@ -1,0 +1,34 @@
+@echo off
+title Atividade - Gerenciamento sistema
+mode 60,30
+color e4
+:inicio
+cls
+echo.
+echo =========================
+echo   GERENCIAMENTO SISTEMA
+echo =========================
+echo [1] Desligar a maquina
+echo [2] Reiniciar a maquina
+echo [R] Retornar ao menu
+echo =========================
+echo.
+set /p gr=Digite a opcao desejada:
+if %gr% == 1 (goto:desligar)
+if %gr% == 2 (goto:reiniciar)
+if %gr% == r (call menu.bat) else (
+		echo.
+		echo =========================
+		echo       Opcao invalida
+		echo =========================
+		pause
+		goto:inicio
+)
+
+:desligar
+start shutdown /p
+goto:inicio
+
+:reiniciar
+start shutdown shutdown -s -t 0
+goto:inicio
