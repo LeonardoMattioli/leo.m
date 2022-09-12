@@ -1,0 +1,17 @@
+dim nome(6), n, i
+call carregarNomes
+sub carregarNomes()
+
+for i=1 to 10 step 1
+    nome(1)="Moquidesia"
+    nome(2)="Lindolfo"
+    nome(3)="Astolfo"
+    nome(4)="Jurema"
+    nome(5)="Rodolfo"
+    nome(6)="Ana"
+    randomize(second(time)) rem default para randomize rem
+    n=int(rnd*6) + 1 rem sorteia um numero inteiro de 0 a 5 (6 numeros) + 1 rem
+    msgbox(nome(n)),vbinformation+vbOKOnly,"AVISO"
+next
+msgbox("Fim do Sorteio"),vbinformation+vbOKOnly,"AVISO"
+end sub
