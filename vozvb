@@ -1,0 +1,46 @@
+dim  n1,n2,n3,media,sit 'declaracao de variaveis
+dim resp, audio
+
+call load_voice
+sub load_voice()
+set audio=CreateObject("SAPI.SPVOICE")
+audio.rate=4 'velocidade da voz
+audio.volume=100
+call entrada_notas 'chamar funcao
+end sub
+
+
+sub entrada_notas()
+n1=cdbl(inputbox("Digite a nota 1","AVISO"))
+n2=cdbl(inputbox("Digite a nota 2","AVISO"))
+n3=cdbl(inputbox("Digite a nota 3","AVISO"))
+
+media=round((n1+n2+n3)/3,1) ' vai dar dizima, round arrendonda para a qtd q vc colocar dps do 3 em exemplo
+if media < 4 then
+  sit = "Reprovado"
+elseif media >= 4 and media < 6 then
+  sit = "Recuperacao"
+
+else
+  sit = "Aprovado"
+end if
+
+'saida de dados por voz
+audio.speak("media do aluno "& media &""+ vbnewline &_
+            "Situacao do aluno "& sit &"")
+
+
+'saida de dados por mensagem
+msgbox("media do aluno: "& media &"" + vbnewline &_
+       "Situacao do aluno: "& sit &""),vbquestion+vbOKOnly,"rendimento do aluno"
+call novo_calculo
+end sub
+
+sub novo_calculo()
+resp = msgbox("Deseja realizar novo calculo?",vbquestion+vbyesno, "ATENCAO")
+if resp=vbyes then  
+  call entrada_notas
+else
+    wscript.quit
+end if
+end sub
