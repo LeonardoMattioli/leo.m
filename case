@@ -1,0 +1,30 @@
+dim cor, farol, resp
+
+call escolha
+sub escolha()
+
+farol=cint(inputbox("[1] Verde" + vbnewline & _ 
+                      "[2] Amarelo"+ vbnewline & _
+                      "[3] Veermelho"+ vbnewline & _ 
+                      "[0 ou 10] Encerrar Script","Cores do Semaforo"))
+select case farol
+
+  case 1:
+    cor="Verde = Siga em frente"
+  case 2:
+    cor="Amarelo - Atenção"
+  case 3:
+    cor="Vermelho - Pare"
+  case 0,10:
+    resp=msgbox("Deseja encerrar",vbquestion+vbyesno,"Aviso")
+    if resp=vbyes then
+        wscript.quit
+    else
+        call escolha
+    end if
+  case else
+    cor="Cor invalida"
+end select
+msgbox(""& cor &""),vbinformation+vbOKOnly,"CORES DO SEMAFORO"
+call escolha
+end sub
