@@ -1,0 +1,46 @@
+@echo off
+title Atividade - Pacote Office
+mode 60,30
+color a0
+:inicio
+cls
+echo.
+echo =========================
+echo      PACOTE OFFICE
+echo =========================
+echo [1] Word
+echo [2] Excel
+echo [3] Power Point
+echo [4] Acess
+echo [R] Retornar ao menu
+echo =========================
+echo.
+set /p of=Digite a opcao desejada:
+if %of% == 1 (goto:word)
+if %of% == 2 (goto:excel)
+if %of% == 3 (goto:power)
+if %of% == 4 (goto:acess)
+if /i %of% == r (call menu.bat) else (
+		echo.
+		echo =========================
+		echo       Opcao invalida
+		echo =========================
+		pause
+		goto:inicio
+)
+
+:word
+start winword.exe
+goto:inicio
+
+:excel
+start excel.exe
+goto:inicio
+
+:power
+start powerpnt.exe 
+goto:inicio
+
+:acess
+start msaccess.exe 
+goto:inicio
