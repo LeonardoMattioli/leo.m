@@ -1,0 +1,58 @@
+@echo off
+title Atividade - Aplicativos Windows
+mode 60,30
+color fd
+:inicio
+cls
+echo.
+echo =========================
+echo   APLICATIVOS WINDOWS
+echo ------------------------
+echo [1] Bloco de notas
+echo [2] Teclado Virtual
+echo [3] Painel de controle
+echo [4] Calculadora
+echo [5] Paint
+echo [6] Internet Explorer
+echo [R] Retornar ao menu
+echo =========================
+echo.
+set /p aw=Digite a opcao desejada:
+if %aw% == 1 (goto:bloco)
+if %aw% == 2 (goto:teclado)
+if %aw% == 3 (goto:painel)
+if %aw% == 4 (goto:calculadora)
+if %aw% == 5 (goto:paint)
+if %aw% == 6 (goto:explorer)
+if %aw% == r (call menu.bat) else (
+		echo.
+		echo =========================
+		echo       Opcao invalida
+		echo =========================
+		pause
+		goto:inicio
+)
+
+:bloco
+start notepad.exe 
+goto:inicio
+
+:teclado
+start osk.exe 
+goto:inicio
+
+:painel
+start control
+goto:inicio
+
+:calculadora
+start calc.exe 
+goto:inicio
+
+:paint
+start mspaint.exe 
+goto:inicio
+
+:explorer
+start iexplore.exe 
+goto:inicio
