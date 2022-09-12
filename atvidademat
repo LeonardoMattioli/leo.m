@@ -1,0 +1,36 @@
+dim n1,n2,n3,operacao(3),rd3, acertos, ac,resp
+call conta
+sub conta()
+
+operacao(0)="+"
+operacao(1)="-"
+operacao(2)="*"
+randomize(second(time))
+rd3=int(rnd*3)
+n1=int(rnd*10) + 1
+n2=int(rnd*10) + 1
+
+n3=cint(inputbox(""& n1 &""+""& operacao(rd3) &""+""& n2 &"", "CONTINHAS"))
+
+select case rd3
+
+  case 0:
+    ac =  n1+n2
+  case 1:
+    ac =  n1-n2
+  case 2:
+    ac =  n1*n2
+end select
+
+if n3 = ac then
+  resp = msgbox("ACERTOU, quer jogar novamente?",vbquestion+vbyesno, "AVISO")
+  if resp=vbyes then
+    call conta
+  else
+    wscript.quit
+  end if
+else
+  msgbox("Errou, tente novamente"),vbcritical+vbOKOnly, "AVISO"
+  call conta
+end if
+end sub
