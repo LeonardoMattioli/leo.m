@@ -1,0 +1,32 @@
+@echo off
+title Atividade - Menu Principal
+mode 60,30
+color 8f
+:inicio
+cls
+echo.
+echo =========================
+echo       MENU PRINCIPAL
+echo =========================
+echo [P] Pacote Office
+echo [A] Aplicativos windows
+echo [S] Servicos de rede
+echo [G] Gerenciamento de rede
+echo [E] Encerrar sessao
+echo [F] Finalizar sessao
+echo =========================
+echo.
+set /p mp= Digite a opcao desejada:
+if /i  %mp% == p (call office.bat)
+if /i  %mp% == a (call windows.bat)
+if /i  %mp% == s (call rede.bat)
+if /i  %mp% == g (call grede.bat)
+if /i  %mp% == e (call inicio.bat)
+if /i  %mp% == f (exit) else (
+		echo.
+		echo =========================
+		echo       Opcao invalida
+		echo =========================
+		pause
+		goto:inicio
+)
