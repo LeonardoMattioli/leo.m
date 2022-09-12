@@ -1,0 +1,33 @@
+@echo off
+title Atividade - Sistemas de informacao
+mode 60,30
+color f0
+:ind
+cls
+echo.
+echo ========================
+echo           LOGIN
+echo ========================
+set /p us= Usuario:
+echo.
+if /i %us% == admin (set /p sh= Senha: ) else (
+		echo.
+		echo.
+		echo.
+		echo =========================
+		echo     Usuario Invalido
+		echo =========================
+		pause
+		goto:ind 
+)
+
+if /i %sh% == admin (call menu.bat) else (
+		echo.
+		echo.
+		echo.
+		echo =========================
+		echo      Senha invalida
+		echo =========================
+		pause
+		goto:ind 	
+)
