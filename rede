@@ -1,0 +1,43 @@
+@echo off
+title Atividade - Servicos de rede
+mode 60,30
+color cb
+:inicio
+cls
+echo.
+echo =========================
+echo    SERVICOS DE REDE
+echo =========================
+echo [1] Navegar na Web
+echo [2] Obter IP da maquina
+echo [3] Testar conexao de rede
+echo [R] Retornar ao menu
+echo =========================
+echo.
+set /p sr=Digite a opcao desejada:
+if %sr% == 1 (goto:navegar)
+if %sr% == 2 (goto:ip)
+if %sr% == 3 (goto:conexao)
+if %sr% == r (call menu.bat) else (
+		echo.
+		echo =========================
+		echo      Opcao invalida
+		echo =========================
+		pause
+		goto:inicio
+)
+
+:navegar
+echo.
+set /p site=Digite o endereco da pagina:
+start chrome.exe %site%
+goto:inicio
+
+:ip 
+start ipconfig
+goto:inicio
+
+:conexao
+echo.
+set /p conexao=Digite o IP ou endereco da pagina:
+ping %conexao% -t
