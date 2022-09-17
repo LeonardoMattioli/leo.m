@@ -1,0 +1,197 @@
+dim nome, basico(10), rd3, intermediario(10), rd4, complexo(10), rd5
+dim resp, audio, p, ganho, l, dificil(10)
+
+call load_voice
+sub load_voice()
+set audio=CreateObject("SAPI.SPVOICE")
+audio.rate=1
+audio.volume=100
+call nome_usuario
+end sub
+
+sub nome_usuario()
+nome=(inputbox("Digite seu nome"))
+call sorteio
+end sub
+
+sub sorteio()
+i=0
+p=0
+ganho = 0
+basico(0)="amarelo"
+basico(1)="vermelho"
+basico(2)="rosa"
+basico(3)="azul"
+basico(4)="verde"
+basico(5)="marrom"
+basico(6)="bege"
+basico(7)="laranja"
+basico(8)="luz"
+basico(9)="leo"
+
+do while i < 5
+    randomize(second(time))
+    rd3=(rnd*10)
+    audio.speak("A Palavra e"& basico(rd3) &"")
+    resp=(inputbox("DIGITE A PALAVRA " + vbnewline &_
+                "================"  + vbnewline &_
+                "[O]uvir Novamente a Palavra" + vbnewline &_
+                "[P]ular a Palavra uma única vez" + vbnewline &_
+                "=============================="))
+
+    if resp = basico(rd3) then
+        ganho = ganho + 1000
+        i = i + 1
+        x= msgbox("Acertou",0,"Aviso")
+
+        elseif resp = "o" then
+        audio.speak("A Palavra é "& basico(rd3) &"")
+
+        elseif resp = "p" then
+            
+
+    else
+        i = 6
+         x=msgbox("vc perdeu, sua pontuacao foi "& ganho &"",0,"Aviso")
+        call load_voice
+        exit do
+    end if
+loop
+call inter
+end sub
+
+sub inter()
+intermediario(0)="Arroz"
+intermediario(1)="batata"
+intermediario(2)="doce"
+intermediario(3)="lerdo"
+intermediario(4)="lindo"
+intermediario(5)="bonito"
+intermediario(6)="feio"
+intermediario(7)="porco"
+intermediario(8)="tela"
+intermediario(9)="tv"
+
+i = 0
+do while i<5
+randomize(second(time))
+rd4=(rnd*10)
+audio.speak("A Palavra e"& intermediario(rd4) &"")
+resp=(inputbox("DIGITE A PALAVRA " + vbnewline &_
+               "================"  + vbnewline &_
+               "[O]uvir Novamente a Palavra" + vbnewline &_
+               "[P]ular a Palavra uma única vez" + vbnewline &_
+               "=============================="))
+
+if resp = intermediario(rd4) then
+    ganho = ganho + 10000
+    i = i + 1
+    x=msgbox("Acertou",0,"Aviso")
+
+    elseif resp = "o" then
+    do while p < 1
+    audio.speak("A Palavra é "& intermediario(rd4) &"")
+    p = p + 1
+    loop
+
+    elseif resp = "p" then
+
+else
+    i= 6
+    x=msgbox("vc perdeu, sua pontuacao foi "& ganho &"",0,"Aviso")
+        call load_voice
+        exit do
+end if
+loop
+call inter_c
+end sub
+
+sub inter_c
+complexo(0)="um"
+complexo(1)="dois"
+complexo(2)="quatro"
+complexo(3)="cinco"
+complexo(4)="seis"
+complexo(5)="sete"
+complexo(6)="oito"
+complexo(7)="nove"
+complexo(8)="dez"
+complexo(9)="onze"
+
+i = 0
+do while i<5
+randomize(second(time))
+rd5=(rnd*10)
+audio.speak("A Palavra e"& complexo(rd5) &"")
+resp=(inputbox("DIGITE A PALAVRA " + vbnewline &_
+               "================"  + vbnewline &_
+               "[O]uvir Novamente a Palavra" + vbnewline &_
+               "[P]ular a Palavra uma única vez" + vbnewline &_
+               "=============================="))
+
+if resp = complexo(rd5) then
+    ganho = ganho + 100000
+    i = i + 1
+nome=(inputbox("acertou"))
+
+    elseif resp = "o" then
+    do while p < 1
+    audio.speak("A Palavra é "& complexo(rd4) &"")
+    p = p + 1
+    loop
+
+    elseif resp = "p" then
+
+else
+    i= 6
+    x=msgbox("vc perdeu, sua pontuacao foi "& ganho &"",0,"Aviso")
+        call load_voice
+        exit do
+end if
+loop
+call dificil_mt
+end sub
+
+sub dificil_mt()
+dificil(0)="uau"
+dificil(1)="dedo"
+dificil(2)="cabeça"
+dificil(3)="perna"
+dificil(4)="unha"
+dificil(5)="cabelo"
+dificil(6)="nariz"
+dificil(7)="boca"
+dificil(8)="orelha"
+dificil(9)="meia"
+
+i = 0
+do while i<1
+randomize(second(time))
+rd5=(rnd*10)
+audio.speak("A Palavra e"& dificil(rd5) &"")
+resp=(inputbox("DIGITE A PALAVRA " + vbnewline &_
+               "================"  + vbnewline &_
+               "[O]uvir Novamente a Palavra" + vbnewline &_
+               "[P]ular a Palavra uma única vez" + vbnewline &_
+               "=============================="))
+
+if resp = dificil(rd5) then
+    ganho = ganho + 1000000
+    i = i + 1
+     x=msgbox("Acertou",0,"Aviso")
+
+    elseif resp = "o" then
+    audio.speak("A Palavra é "& dificil(rd4) &"")
+
+    elseif resp = "p" then
+
+else
+    i= 2
+   x= msgbox("vc perdeu, sua pontuacao foi "& ganho &"",0,"Aviso")
+        call load_voice
+        exit do
+end if
+loop
+
+x= msgbox("sua pontuacso foi"& ganho & "",0,"Aviso")
+end sub
